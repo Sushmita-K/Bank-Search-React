@@ -1,0 +1,51 @@
+.input {
+  display: flex;
+  width: 370px;
+  height: 30px;
+  padding-left: 20px;
+  margin: 30px 60px;
+  float: left;
+  border: 1px solid black;
+  font-family: "Avenir LT Std", sans-serif;
+}
+
+.font-control {
+  display: flex;
+  margin: 35px 60px;
+  height: 30px;
+  width: 400px;
+  float: right;
+  border: 1px solid black;
+  font-family: "Avenir LT Std", sans-serif;
+}
+.table {
+  width: 100%;
+  margin: 30px auto;
+  border: 1px solid black;
+  font-family: "Avenir LT Std", sans-serif;
+  font-size: 16px;
+}
+.table-header {
+  background-color: rgb(204, 62, 62);
+}
+.pagination-status {
+  display: inline-flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+.pagination-status_item {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination-status__btn {
+  background-color: rgb(204, 62, 62);
+  border: 1px solid black;
+  width: 40px;
+  height: 30px;
+}
+.pagination-status__btn:hover {
+  color: rgb(204, 62, 62);
+  background-color: black;
+}
