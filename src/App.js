@@ -55,8 +55,8 @@ class App extends Component {
         />
 
         <select className="font-control" name="id">
-          {this.state.data.map((bank, key) => (
-            <option value={this.state.data.ifsc}>{bank.bank_name}</option>
+          {this.state.data.slice(0, 5).map((bank, key) => (
+            <option value={this.state.data.ifsc}>{bank.city}</option>
           ))}
         </select>
 
