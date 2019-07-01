@@ -13,7 +13,8 @@ class App extends Component {
       query: "",
       searchString: [],
       dataLength: [],
-      filterData: []
+      filterData: [],
+      pagesize:'',
     };
   }
   filterArray = event => {
@@ -25,6 +26,15 @@ class App extends Component {
     });
     this.setState({ filterData: updatedList });
   };
+  setPagesize=(e)=>{
+    this.setState({pagesize:e.target.value});
+    return this.state.pagesize;
+    
+    
+
+console.log(this.state.pagesize,"length")
+
+  }
 
   componentWillMount() {
     console.log("COMPONENT DID MOUNT");
@@ -34,18 +44,19 @@ class App extends Component {
         return results.json();
       })
       .then(data => {
-        return this.setState({
+        this.setState({
           data: data
         });
       });
+      
   }
 
   render() {
     const Header = ["IFSC", "Bank-ID", "Bank-Name", "Branch", "Address"];
     console.log(this.state.data, "hellllooooo");
-    console.log(this.state.responseData, "responseData");
-
+    
     return (
+      
       <div>
         <input
           type="text"
@@ -61,6 +72,7 @@ class App extends Component {
         </select>
 
         {this.state.data.length > 0 ? (
+        
           <TablePagination
             className="tableData"
             headers={Header}
@@ -69,15 +81,30 @@ class App extends Component {
                 ? this.state.filterData
                 : this.state.data
             }
+          
             columns="ifsc.bank_id.bank_name.branch.address"
-            perPageItemCount={10}
+            perPageItemCount={25==this.state.pagesize? 25 : 10}
             totalCount={this.state.data.length}
             nextPageText="Next"
             prePageText="Prev"
           />
         ) : null}
+<span className="pageSetsize">Page Size:
+<select className="sizeControl" onClick={this.setPagesize}>
+
+            <option value='10'>10</option>
+            <option value='25'>25</option>
+        
+
+        </select>
+   </span>
+     
+        
       </div>
+      
+      
     );
+    
   }
 }
 export default App;

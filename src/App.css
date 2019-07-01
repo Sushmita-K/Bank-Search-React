@@ -6,7 +6,8 @@
   margin: 30px 60px;
   float: left;
   border: 1px solid black;
-  font-family: "Avenir LT Std", sans-serif;
+  font-family: sans-serif;
+  background-color: beige;
 }
 
 .font-control {
@@ -16,17 +17,26 @@
   width: 400px;
   float: right;
   border: 1px solid black;
-  font-family: "Avenir LT Std", sans-serif;
+  font-family: sans-serif;
+  background-color: beige;
 }
 .table {
   width: 100%;
   margin: 30px auto;
   border: 1px solid black;
-  font-family: "Avenir LT Std", sans-serif;
+  font-family: sans-serif;
   font-size: 16px;
 }
 .table-header {
   background-color: rgb(204, 62, 62);
+}
+tbody{
+  font-family: sans-serif;
+  background-color: beige;
+}
+.clearfix{
+  display: flex;
+  float: left;
 }
 .pagination-status {
   display: inline-flex;
@@ -48,4 +58,20 @@
 .pagination-status__btn:hover {
   color: rgb(204, 62, 62);
   background-color: black;
+}
+.pageSetsize{
+  display: inline-flex;
+  margin-right: 90px;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: sans-serif;
+  float: right;
+
+}
+.sizeControl{
+  width: 60px;
+  background-color: beige;
+  border: 1px solid black;
+  margin-left: 10px;
 }
