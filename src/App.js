@@ -15,6 +15,7 @@ class App extends Component {
       dataLength: [],
       filterData: [],
       pagesize:'',
+      city:'MUMBAI'
     };
   }
   filterArray = event => {
@@ -29,25 +30,33 @@ class App extends Component {
   setPagesize=(e)=>{
     this.setState({pagesize:e.target.value});
     return this.state.pagesize;
-    
-    
-
-console.log(this.state.pagesize,"length")
 
   }
 
-  componentWillMount() {
-    console.log("COMPONENT DID MOUNT");
-    fetch("https://vast-shore-74260.herokuapp.com/banks?city=MUMBAI")
+  getCities(e){
+    this.setState({[e.target.name]:e.target.value})
+   
+    this.getApi(e.target.value)
+
+  }
+
+  getApi(value){
+    fetch("https://vast-shore-74260.herokuapp.com/banks?city=" +
+        value)
       .then(results => {
         console.log(results);
         return results.json();
       })
       .then(data => {
         this.setState({
-          data: data
+          data: data,
+          
         });
       });
+  }
+  componentDidMount() {
+    console.log("COMPONENT DID MOUNT");
+  this.getApi(this.state.city)
       
   }
 
@@ -65,10 +74,15 @@ console.log(this.state.pagesize,"length")
           placeholder="Search..."
         />
 
-        <select className="font-control" name="id">
-          {this.state.data.slice(0, 5).map((bank, key) => (
-            <option value={this.state.data.ifsc}>{bank.city}</option>
-          ))}
+        <select className="font-control" name="city"  onClick={this.getCities.bind(this)}>
+         
+            <option value="MUMBAI">MUMBAI</option>
+            <option value="DELHI">DELHI</option>
+            <option value="KOLKATA">KOLKATA</option>
+            <option value="BANGLORE">BANGLORE</option>
+            <option value="MYSORE">MYSORE</option>
+
+        
         </select>
 
         {this.state.data.length > 0 ? (
