@@ -15,7 +15,9 @@ class App extends Component {
       dataLength: [],
       filterData: [],
       pagesize:'',
-      city:'MUMBAI'
+      city:'MUMBAI',
+      checked:[],
+      Checkbox:''
     };
   }
   filterArray = event => {
@@ -35,11 +37,13 @@ class App extends Component {
 
   getCities(e){
     this.setState({[e.target.name]:e.target.value})
-   
+    localStorage.setItem('myInLocalStorage', e.target.value);
     this.getApi(e.target.value)
 
   }
-
+  onCheck=(e)=>{
+    this.setState({checked:e.target.checked})
+  }
   getApi(value){
     fetch("https://vast-shore-74260.herokuapp.com/banks?city=" +
         value)
@@ -51,19 +55,24 @@ class App extends Component {
         this.setState({
           data: data,
           
+          
         });
       });
   }
+
   componentDidMount() {
     console.log("COMPONENT DID MOUNT");
   this.getApi(this.state.city)
+  
+  
       
   }
 
   render() {
     const Header = ["IFSC", "Bank-ID", "Bank-Name", "Branch", "Address"];
     console.log(this.state.data, "hellllooooo");
-    
+
+
     return (
       
       <div>
@@ -84,7 +93,7 @@ class App extends Component {
 
         
         </select>
-
+       
         {this.state.data.length > 0 ? (
         
           <TablePagination
